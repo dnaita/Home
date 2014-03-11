@@ -1,11 +1,16 @@
 package com.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import com.services.impl.ManagedLoginBean;
 
-public class ContactDetail {
+public class ContactDetail implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7406033583537431867L;
 	private Long id;
 	private String phoneNum1;
 	private String phoneNum2;

@@ -11,6 +11,7 @@
 		 <h:form>
             <h:panelGrid columns="2">
             	<h:outputLabel value="Welcome #{loginBean.name}"></h:outputLabel>
+            	<h:commandButton value="Logout" action="#{loginBean.logout}"></h:commandButton>
             </h:panelGrid>
         </h:form>
         <h:form>

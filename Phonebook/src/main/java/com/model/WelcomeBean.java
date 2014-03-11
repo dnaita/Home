@@ -1,7 +1,7 @@
 package com.model;
 
 
-public class WelcomeBean {
+public class WelcomeBean{
 	
 		
 }

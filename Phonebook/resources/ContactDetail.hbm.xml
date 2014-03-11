@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 10, 2014 5:37:01 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.model.ContactDetail" table="CONTACTDETAIL">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <property name="phoneNum1" type="java.lang.String">
+            <column name="PHONENUM1" />
+        </property>
+        <property name="phoneNum2" type="java.lang.String">
+            <column name="PHONENUM2" />
+        </property>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <list name="phoneBookList" inverse="false" table="CONTACTDETAIL" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="com.model.ContactDetail" />
+        </list>
+    </class>
+</hibernate-mapping>
