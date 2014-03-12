@@ -48,21 +48,19 @@ public class LoginBean implements Serializable {
 		FacesContext context = FacesContext.getCurrentInstance();
 		if (this.getName() != null && this.getPassword() != null)
 			if (!this.getName().equals("") && !this.getPassword().equals(""))
-				if(this.getName().equals("deepak")&&this.getPassword().equals("deepak"))
-			{
-				outcome = "welcome";
-			} else {
-				return null;
-			}
-		this.name = "username";
-		this.password = "password";
+				if (this.getName().equals("deepak") && this.getPassword().equals("deepak")) {
+					outcome = "welcome";
+				} else {
+					this.name = "username";
+					this.password = "password";
+					return null;
+				}
 		return outcome;
 
 	}
 
 	public String logout() {
-		HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
-				.getExternalContext().getSession(true);
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
 		session.invalidate();
 		return DISPATCH_LOGOUT;
 	}

@@ -14,7 +14,7 @@ public class ManagedLoginBean {
 	private static EntityManager em = factory.createEntityManager();*/
 
 	public List<ContactDetail> getPhoneBookDetails() {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		List<ContactDetail> result = session.createQuery("Select t from ContactDetail t").list();
 		for (ContactDetail bean : result) {
@@ -22,14 +22,16 @@ public class ManagedLoginBean {
 			System.out.println(bean.getPhoneNum1());
 		}
 		session.getTransaction().commit();
+		session.close();
 		return result;
 	}
 
 	public void insertLoginDetail(ContactDetail phoneDetails) {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		session.save(phoneDetails);
 		session.getTransaction().commit();
+		session.close();
 		
 	}
 	
@@ -61,6 +63,7 @@ public class ManagedLoginBean {
 			todo.setPassword("Password");
 	        session.save(todo);
 	        session.getTransaction().commit();
+	        session.close();
 	}
 
 }
